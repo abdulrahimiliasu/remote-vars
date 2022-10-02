@@ -1,8 +1,14 @@
 {
-  "name": "remote-vars",
-  "displayName": "Remote Vars",
-  "description": "Set your Environment/Config Vars to Remote Servers via CLI commands.",
+  "name": "set-remote-vars",
+  "displayName": "Set Remote Vars",
+  "description": "Set your Environment/Config Vars to Remote Servers by runnuing a set:config CLI command on all of them.",
+  "author": {
+    "name": "Abdulrahim Iliasu Illo",
+    "email": "abdulrahimiliasu@icloud.com",
+    "url": "http://github.com/abdulrahimiliasu"
+  },
   "version": "0.0.1",
+  "repository": "https://github.com/abdulrahimiliasu/remote-vars",
   "engines": {
     "vscode": "^1.71.0"
   },
@@ -10,14 +16,38 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:remote-vars.helloWorld"
+    "onCommand:set-remote-vars.set-vars"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Set Remote Vars",
+      "properties": {
+        "ConfigVars.CommandToRun": {
+          "type": "string",
+          "markdownDescription": "Command to run when pushing a remote variable, use `%var%` in place of the remote variable"
+        },
+        "ConfigVars.VariableDelimeter": {
+          "type": "string",
+          "enum": [
+            " ",
+            "=",
+            ":"
+          ],
+          "default": "=",
+          "enumDescriptions": [
+            "White space",
+            "Equality Sign",
+            "Colon"
+          ],
+          "markdownDescription": "Delimeter used when parsing variable in command e.g `':'` will be `$your-cmd VAR:SECRET`"
+        }
+      }
+    },
     "commands": [
       {
-        "command": "remote-vars.helloWorld",
-        "title": "Hello World"
+        "command": "set-remote-vars.set-vars",
+        "title": "Set Remote Vars: Set Vars"
       }
     ]
   },
@@ -30,16 +60,19 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.71.0",
     "@types/glob": "^7.2.0",
     "@types/mocha": "^9.1.1",
     "@types/node": "16.x",
+    "@types/vscode": "^1.71.0",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
+    "@vscode/test-electron": "^2.1.5",
     "eslint": "^8.20.0",
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
-    "typescript": "^4.7.4",
-    "@vscode/test-electron": "^2.1.5"
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
   }
 }

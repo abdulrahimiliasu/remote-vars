@@ -1,26 +1,18 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import { ExecuteExtension } from "./execution/ExecuteExtension";
+import { ActivateExtenstion } from "./activate/ActivateExtenstion";
+import { Validator } from "./execution/Validator";
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "remote-vars" is now active!');
+  const activationProcess = new ActivateExtenstion(context);
+  const validator = new Validator(context);
+  const executionProcess = new ExecuteExtension(activationProcess, validator);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('remote-vars.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Remote Vars!');
-	});
+  let disposable = vscode.commands.registerCommand("set-remote-vars.set-vars", async () => {
+    executionProcess.pushVars();
+  });
 
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+// export function deactivate() {}
