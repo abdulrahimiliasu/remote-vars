@@ -23,7 +23,7 @@ export class ActivateExtenstion {
     return delimeter;
   }
 
-  createStatusBar(): void {
+  private createStatusBar(): void {
     const statusBar = window.createStatusBarItem(StatusBarAlignment.Right, 100);
 
     statusBar.tooltip = "Run Set Remote Vars";

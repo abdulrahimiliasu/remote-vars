@@ -7,13 +7,13 @@ export class ExecuteExtension {
 
   constructor(private activationProcess: ActivateExtenstion, private validator: Validator) {}
 
-  private async getDotEnvVars(delemiter: string = "="): Promise<string[]> {
+  async getDotEnvVars(delemiter: string = "="): Promise<string[]> {
     const vars = await this.readDotEnvContent();
     let formattedVars = vars.map((v) => v.replace("=", delemiter));
     return formattedVars;
   }
 
-  private async readDotEnvContent(): Promise<string[]> {
+  async readDotEnvContent(): Promise<string[]> {
     const path = workspace.workspaceFolders![0].uri.path;
     const uri = Uri.file(`${path}/remote-vars.config`);
 

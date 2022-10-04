@@ -1,71 +1,37 @@
-# remote-vars README
+# Set Remote Vars
 
-This is the README for your extension "remote-vars". After writing up a brief description, we recommend including the following sections.
+This extension helps push all local enviroment/config variables to a remote server usung a specific `cli command`, wwithout needing to copy and paste into the browser or do it manually with the `cli` via the terminal.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Push all local variables to remote server at once, by running a command on all variables found.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Install and login to the `CLI` you would like to use.
+- Create a `remote.vars.config` file in the project directory and paste all variables you want to push to remote server there
+
+## How to use this extension
+
+- Press `Shift` + `Cmd` + `P` to open the command window in vs code
+- Go to Extension Settings, set and save the command to execute.
+- Run `Set Remote Vars: Set Var` command
+
+<br>
+
+> Note: This extension does not read your local `.env` file, it rather uses a `remote.vars.config` file to look for all local variables. Please make sure to add all variables you want to push to remote server in that configuration file.
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- `setRemoteVars.command`: Save command to run when pushing vars (must contain `%var%` in place of variable).
+- `setRemoteVars.delimeter`: The delimeter to use in when formatting your command e.g `:` wiil be `$your-command YOUR:VAR` i.e command field is like `$your-command %var%`
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+First release version
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
 ---
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
