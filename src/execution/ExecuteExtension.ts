@@ -15,7 +15,7 @@ export class ExecuteExtension {
 
   async readDotEnvContent(): Promise<string[]> {
     const path = workspace.workspaceFolders![0].uri.path;
-    const uri = Uri.file(`${path}/remote-vars.config`);
+    const uri = Uri.file(`${path}/remote.vars.config`);
 
     try {
       const config = await workspace.openTextDocument(uri);
