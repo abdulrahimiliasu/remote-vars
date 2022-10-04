@@ -18,6 +18,12 @@ This extension helps push all local enviroment/config variables to a remote serv
 - Run `Set Remote Vars: Set Var` command
 
 <br>
+![How to setup extension gif animation](./gifs//SetRemoteVars1.gif "How to setup and run extension").
+
+### Using Status Bar
+
+![How to setup extension gif animation](./gifs/SetRemoteVars2.gif "How to setup and run extension"").
+<br>
 
 > Note: This extension does not read your local `.env` file, it rather uses a `remote.vars.config` file to look for all local variables. Please make sure to add all variables you want to push to remote server in that configuration file.
 
